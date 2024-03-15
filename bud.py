@@ -31,7 +31,10 @@ prompt = PromptTemplate(template=prompt_template, input_variables=[])
 # Benchmark the models
 results = []
 for model in models:
-    print(f"Running model: {model.get_name()}")
+    model_name = str(model.__repr__()).translate(str.maketrans("(),=':", "______"))
+    print(f"Pre-loading model: {model_name}")
+    model.invoke("")
+    print(f"Running model: {model_name}")
     chain = prompt | model
     start_time = time.time()
     output = chain.invoke({})
@@ -47,11 +50,18 @@ for model in models:
         grade = "C"
     else:
         grade = "F"
-
-    results.append((model.get_name(), elapsed_time, grade, output))
+        
+    with open(f"results/{model_name}.txt", "w") as file:
+        file.write(f"{model_name}\n")
+        file.write(f"{elapsed_time}\n")
+        file.write(f"{grade}\n")
+        file.write(f"{output}\n") 
+        
+    results.append((model_name, elapsed_time, grade, output))
 
 # Print the results in a tabular format
-print("\n{:<20} {:<20} {:<20} {:<}".format("Model", "Time (s)", "Grade", "Output"))
+print("\n{:<30} {:<12} {:5} {}".format("Model", "Time (s)", "Grade", "Output"))
 print("-" * 80)
 for model_name, elapsed_time, grade, output in results:
-    print("{:<20} {:<20} {} {}".format(model_name, round(elapsed_time, 2), grade, output[:20] + "...")) 
+    print("{:<30} {:<12} {:5} {}".format(model_name, round(elapsed_time, 2), grade, output[:20] + "..."))
+    
