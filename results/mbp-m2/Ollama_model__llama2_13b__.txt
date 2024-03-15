@@ -1,0 +1,50 @@
+Ollama_model__llama2_13b__
+52.304178953170776
+A
+  As a network engineer, I have designed a 3-building campus network using the most recent Cisco equipment. The following is a detailed design specification for the network, including:
+
+Network Topology ASCII Diagram
+
+The network topology will be based on a hierarchical star design with three buildings (Building A, Building B, and Building C) connected by high-speed links. Each building will have its own switches and routers to provide Layer 2 and Layer 3 connectivity.
+
+List of Required Hardware
+
+* Three Catalyst 9500 switches (one for each building)
+* Two Nexus 9000 switches (one for the core and one for the distribution layer)
+* One ASA 5506-X firewall for security
+* One WAAS 4.3 device for application visibility and control
+* Three 7600 series routers (one for each building)
+
+IP Addressing Scheme
+
+The IP addressing scheme will be based on a /24 subnet mask, with a range of 10.0.0.0 - 10.0.0.255 for Building A, 10.0.1.0 - 10.0.1.255 for Building B, and 10.0.2.0 - 10.0.2.255 for Building C. The core layer will use a /28 subnet mask, with a range of 10.0.0.0/28 for the first two buildings and 10.0.2.0/28 for Building C.
+
+VLAN Configuration
+
+The network will be divided into VLANs based on departmental requirements:
+
+* VLAN 10 - Management (default)
+* VLAN 20 - Sales
+* VLAN 30 - Marketing
+* VLAN 40 - Finance
+
+Each building will have its own set of VLANs, with Building A having VLANs 10-30, Building B having VLANs 20-40, and Building C having VLANs 30-40.
+
+Routing Protocols
+
+The network will use OSPF as the routing protocol for intra-building routing and BGP for inter-building routing. The OSPF configuration will include the following:
+
+* Areas: Building A, Building B, and Building C will each have their own area.
+* Link-local addresses: Each building will have its own link-local address (10.0.0.1/24 for Building A, 10.0.1.1/24 for Building B, and 10.0.2.1/24 for Building C).
+* Autonomous system numbers: Each building will have its own autonomous system number (ASN) - 65001 for Building A, 65002 for Building B, and 65003 for Building C.
+
+Security Considerations
+
+The network design will prioritize security using the following measures:
+
+* Access control lists (ACLs): Each building's access switches will have ACLs to restrict unauthorized access to the network.
+* Firewall rules: The ASA 5506-X firewall will have rules configured to allow only necessary traffic between buildings and the internet.
+* VLAN segmentation: Each department will be placed in a separate VLAN to limit the spread of malware and unauthorized access.
+* Secure remote access: The network will use secure remote access methods such as IPSec VPN or Cisco AnyConnect to allow authorized remote access to the network.
+
+The design specification above prioritizes performance, scalability, and security by using a hierarchical star design with high-speed links, deploying the latest Cisco equipment, implementing VLAN segmentation and secure remote access methods, and configuring OSPF and BGP routing protocols for efficient inter-building communication.

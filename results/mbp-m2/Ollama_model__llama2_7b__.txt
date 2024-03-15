@@ -1,0 +1,79 @@
+Ollama_model__llama2_7b__
+24.863672018051147
+A
+1. Network Topology ASCII Diagram:
+```
+      +---------------+
+      |   Building 1  |
+      +---------------+
+                   |
+                   |
+      +---------------+
+      |   Building 2  |
+      +---------------+
+                   |
+                   |
+      +---------------+
+      |   Building 3  |
+      +---------------+
+                   |
+                   |
+      +---------------+
+      | Network Core  |
+      +---------------+
+```
+In this topology, the three buildings are connected to a central network core through dedicated links (WAN links). The network core serves as the hub for all communication between the buildings. This design provides redundancy and scalability, allowing for easy expansion and maintenance of the network infrastructure.
+
+2. List of Required Hardware:
+
+a. Routers:
+
+* 3 x Cisco 3850 routers (one per building)
+
+b. Switches:
+
+* 9 x Cisco 3560 switches (3 x per building)
+
+c. Firewalls:
+
+* 1 x Cisco ASA 5505 firewall (for the network core)
+
+d. Other hardware:
+
+* 1 x DC power supply (for each building)
+* 1 x UPS (uninterruptible power supply) for the network core
+
+3. IP Addressing Scheme:
+
+The campus network will use a Classless Inter-Domain Routing (CIDR) addressing scheme to maximize network efficiency and reduce the number of IP addresses required. The following IP address ranges will be used:
+
+* Building 1: 10.0.0.0/24
+* Building 2: 10.0.1.0/24
+* Building 3: 10.0.2.0/24
+* Network Core: 10.0.0.0/8
+
+The first block of IP addresses (e.g., 10.0.0.0/24) will be used for the local subnet, while the second block (e.g., 10.0.1.0/24) will be used for the remote subnet.
+
+4. VLAN Configuration:
+
+To ensure proper segmentation and security, each building will be configured into its own VLAN (Virtual LAN). Each VLAN will have its own set of IP addresses and routing protocols configured. The following VLAN configuration will be used:
+
+* Building 1: VLAN 100
+* Building 2: VLAN 200
+* Building 3: VLAN 300
+* Network Core: VLAN 400
+
+5. Routing Protocols:
+
+To ensure efficient routing and scalability, the following routing protocols will be used:
+
+* OSPF (Open Shortest Path First): This will be used as the primary routing protocol for the campus network.
+* BGP (Border Gateway Protocol): This will be used to exchange routing information between the routers in each building and the network core.
+6. Security Considerations:
+
+To ensure security, the following security measures will be implemented:
+
+* Firewall rules will be configured to restrict access to the network based on IP address ranges.
+* Access control lists (ACLs) will be used to filter traffic at each building's perimeter routers.
+* Encryption will be used to protect data transmitted between buildings and the network core.
+* Regular security audits and vulnerability assessments will be performed to ensure the security of the network.
