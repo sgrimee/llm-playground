@@ -1,0 +1,79 @@
+Ollama_model__llama2_7b__
+76.85954856872559
+A
+Network Topology ASCII Diagram:
+```
+      +---------------+
+      |   Building 1  |
+      +---------------+
+           |
+           |
+           v
+      +---------------+
+      |   Building 2  |
+      +---------------+
+           |
+           |
+           v
+      +---------------+
+      |   Building 3  |
+      +---------------+
+           |
+           |
+           v
+      +---------------+
+      |   Core Network  |
+      +---------------+
+           |
+           |
+           v
+      +---------------+
+      |   Internet  |
+      +---------------+
+```
+
+Required Hardware:
+
+1. Cisco 3745 routers (2 per building, 1 at the core)
+2. Cisco 2960 switches (2 per building, 1 at the core)
+3. Cisco ASA 5500 firewalls (1 per building, 1 at the core)
+4. Cisco 877 router (1 at the core)
+5. Cisco 2000 series switches (1 at each building)
+6. Cisco 3850 series switches (1 at the core)
+
+IP Addressing Scheme:
+
+The network will use a Classless Inter-Domain Routing (CIDR) addressing scheme with a /24 prefix for each building and a /20 prefix for the core network. The IP addresses will be assigned as follows:
+
+* Building 1: 192.168.1.0/24
+* Building 2: 192.168.2.0/24
+* Building 3: 192.168.3.0/24
+* Core Network: 192.168.4.0/20
+
+VLAN Configuration:
+
+The network will use 4 VLANs:
+
+* VLAN 1: default VLAN for all devices
+* VLAN 2: used for management traffic (server, switches, etc.)
+* VLAN 3: used for data traffic (workstations, etc.)
+* VLAN 4: used for voice traffic (VoIP phones, etc.)
+
+Routing Protocols:
+
+The network will use a combination of static routing and OSPF (Open Shortest Path First) to ensure reliable connectivity between the buildings and the core network. The static routing will be used to establish connections between the buildings, while OSPF will be used to determine the best path for traffic between the buildings and the core network.
+
+Security Considerations:
+
+The network will implement a number of security measures to protect against unauthorized access and malicious activity:
+
+* Firewalls will be used to block incoming traffic from untrusted networks, while allowing outgoing traffic to be accessed from trusted networks.
+* Network Access Control (NAC) will be implemented to restrict network access based on user identity and security policies.
+* Intrusion Detection Systems (IDS) will be used to monitor the network for signs of suspicious activity.
+* Regular security audits and vulnerability assessments will be performed to identify and address potential security risks.
+
+Additional Notes:
+
+* The network will use a redundant backbone to ensure that there is always a backup path in case of failure.
+* The network will implement Quality of Service (QoS) to prioritize traffic and ensure that critical applications receive adequate bandwidth.
+* The network will use 802.1q tagging to prioritize traffic on the core switches.

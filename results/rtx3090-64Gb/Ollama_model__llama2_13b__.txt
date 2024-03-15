@@ -1,0 +1,72 @@
+Ollama_model__llama2_13b__
+171.03191781044006
+A
+  Sure! Here's a detailed design specification for a 3-building campus network:
+
+Network Topology ASCII Diagram
+------------------------------
+
+|   Building 1   |    Building 2   |      Building 3       |
+|-----------|-----------|-----------------------|
+|     LAN     |     LAN     |             LAN            |
+|  +------------+        +---------------+        +---------------+
+|  |        WAN     |        WAN     |        WAN      |
+|  +------------+        +---------------+        +---------------+
+|  |       Core    |       Core    |       Core   |
+|  +------------+        +---------------+        +---------------+
+|  |                                                         |
+|  |                                                         |
+|  v                                                         v
+|  |     Switch   |     Switch   |     Switch   |
+|  +------------+        +---------------+        +---------------+
+|  |       VLAN    |       VLAN    |       VLAN   |
+|  +------------+        +---------------+        +---------------+
+|  |                                                         |
+|  |                                                         |
+|  v                                                         v
+|  |     Router   |     Router   |     Router   |
+
+List of Required Hardware
+-------------------------
+
+* (3) Cisco Catalyst 4500E switches
+* (2) Cisco ASA 5506 firewalls
+* (2) Cisco WS-C4500-E switches
+* (2) Cisco 3850 routers
+* (1) Cisco 3750 router
+
+IP Addressing Scheme
+------------------------
+
+* IPv4: 10.0.0.0/24 for all networks
+* IPv6: 2001:0:0:0/128 for all networks
+
+VLAN Configuration
+--------------------
+
+* VLAN 1: Production traffic (Buildings 1-3)
+* VLAN 2: Management traffic (Buildings 1-3)
+* VLAN 3: Guest traffic (Building 1 only)
+
+Routing Protocols
+-------------------
+
+* OSPFv3 for all intra-building and inter-building routes
+
+Security Considerations
+-------------------------
+
+* Implement ACLs on all switches and routers to control access to network segments
+* Configure SSH and SNMP for remote management
+* Enable SSL/TLS encryption for secure communication between networks
+
+Each section of the design prioritizes performance, scalability, and security:
+
+1. Network topology: The ASCII diagram shows a collapsed backbone architecture with three buildings connected via high-speed links. This design provides efficient use of bandwidth and reduces network latency.
+2. List of required hardware: The list includes Cisco Catalyst 4500E switches, ASA 5506 firewalls, and 3850 routers, which are all high-performance devices that support the latest networking standards and technologies.
+3. IP addressing scheme: The IP addressing scheme uses a private IP range (10.0.0.0/24) for all networks, which helps to conserve IP addresses and provides appropriate network segmentation.
+4. VLAN configuration: The VLAN configuration separates traffic into different categories based on the network requirements, providing efficient use of network resources and improving network performance.
+5. Routing protocols: OSPFv3 is used for all intra-building and inter-building routes, which provides a robust and scalable routing solution that can adapt to changes in the network.
+6. Security considerations: The design includes ACLs on all switches and routers to control access to network segments, SSH and SNMP for remote management, and SSL/TLS encryption for secure communication between networks. These security measures help to protect the network from unauthorized access and ensure the confidentiality and integrity of network data.
+
+This design provides a high-performance, scalable, and secure network infrastructure for the 3-building campus network. The use of Cisco equipment ensures that the network is built with cutting-edge technology and supports the latest networking standards and features.

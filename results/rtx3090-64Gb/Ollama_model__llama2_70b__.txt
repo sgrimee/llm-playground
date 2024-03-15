@@ -1,0 +1,60 @@
+Ollama_model__llama2_70b__
+810.0719940662384
+F
+Network Topology:
+Building 1
+    -----------------
+   /                 \
+  (Cisco Catalyst 9500)    (Cisco Nexus 7000)
+   \                  /
+    -----------------
+
+Building 2
+    -----------------
+   /                 \
+  (Cisco Catalyst 9500)    (Cisco Nexus 7000)
+   \                  /
+    -----------------
+
+Building 3
+    -----------------
+   /                 \
+  (Cisco Catalyst 9500)    (Cisco Nexus 7000)
+   \                  /
+    -----------------
+
+Hardware:
+The following hardware components are required for this campus network design:
+
+* Cisco Catalyst 9500 Series switches (one per building)
+* Cisco Nexus 7000 Series switches (one per building)
+* Cisco ASA 5500 Series firewalls (one for the entire campus)
+* Cisco ISR 4300 Series routers (one for each building)
+* Cisco Aironet 1572S access points (several per building)
+
+IP Addressing Scheme:
+The IP addressing scheme will be based on a 10.0.0.0/8 subnet, with each building having its own dedicated subnet. The IP addresses for each building will be assigned as follows:
+
+* Building 1: 10.0.1.0/24
+* Building 2: 10.0.2.0/24
+* Building 3: 10.0.3.0/24
+
+VLAN Configuration:
+To segregate traffic and improve network performance, we will create several VLANs for different types of traffic:
+
+* VLAN 1 (Default VLAN): 10.0.1.0/24 (Building 1), 10.0.2.0/24 (Building 2), and 10.0.3.0/24 (Building 3)
+* VLAN 5 (Voice VLAN): 10.0.1.100/24 (Building 1), 10.0.2.100/24 (Building 2), and 10.0.3.100/24 (Building 3)
+* VLAN 10 (Data VLAN): 10.0.1.200/24 (Building 1), 10.0.2.200/24 (Building 2), and 10.0.3.200/24 (Building 3)
+
+Routing Protocols:
+To connect the three buildings and ensure efficient communication between them, we will use OSPF (Open Shortest Path First) as our routing protocol. We will also enable IPv6 support to ensure future compatibility.
+
+Security Considerations:
+Our security considerations include:
+
+* Firewall protection: The Cisco ASA 5500 Series firewalls will be used to protect the campus network from external threats, and they will be configured with access control lists (ACLs) to regulate inbound and outbound traffic.
+* Intrusion prevention and detection: We will enable IPS/IDS on the firewalls to detect and prevent potential security threats.
+* Access control: We will use 802.1X protocol with RADIUS authentication to ensure that only authorized devices can access the network.
+* Encryption: We will enable encryption (such as PEAP or TKIP) for all wireless communications to protect against eavesdropping and unauthorized access.
+* Network segmentation: As mentioned earlier, we will use VLANs to segregate traffic and reduce the attack surface.
+* Regular security updates and monitoring: Regular security updates and monitoring will be performed to ensure that the network remains secure and up-to-date.
