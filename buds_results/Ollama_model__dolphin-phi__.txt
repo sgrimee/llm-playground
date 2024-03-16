@@ -1,0 +1,35 @@
+dolphin-phi
+35.96039128303528
+A
+Title: Campus Network Design Specification
+
+1. Network Topology Ascii Diagram
+The network topology for a 3-building campus will be a star configuration, where all devices are connected to a central hub or access point (AP). This design provides efficient and reliable connectivity throughout the campus.
+
+2. Required Hardware:
+   a. Cisco Catalyst 4800 Series Access Points (APs): To serve as the central hub for the network.
+
+   b. Cisco Catalyst 9000 Series Repeaters (RMs): To extend the reach of the APs in between buildings.
+
+   c. Cisco Nexus 7000-X Series Routing Modules: For inter-building connectivity and routing.
+
+   d. Cisco Catalyst 3100 Series Switch: To connect the campus to the internet.
+
+   e. Cisco Meraki AirDefense Firewall: To secure the network from external threats.
+
+3. IP Addressing Scheme:
+Use a multi-tenant private subnet for each building, allowing multiple users and devices on the same network without interference.
+
+4. VLAN Configuration:
+Create separate VLANs for different departments or services within each building to manage traffic efficiently and secure communications.
+
+5. Routing Protocols:
+Use the latest Cisco IOS (Internetworking Operating System) routing protocols, such as OSPF (Open Shortest Path First) and BGP (Bundling Protocol for Internet Branching), for optimal performance and scalability.
+
+6. Security Considerations:
+   a. Implement a strong access control policy to ensure that only authorized devices can connect to the network.
+
+   b. Configure the Meraki AirDefense Firewall with appropriate security features, such as firewall rules and intrusion detection systems (IDS).
+
+   c. Regularly monitor network traffic and apply necessary updates and patches to maintain security.
+   d. Implement VLAN tagging for sensitive data to restrict access and prevent unauthorized disclosure.

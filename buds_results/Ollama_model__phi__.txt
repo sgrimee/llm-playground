@@ -1,0 +1,19 @@
+phi
+35.32466721534729
+F
+ As a Network Engineer tasked with designing a 3-building campus network using the most recent Cisco equipment, here is a detailed design specification that meets the requirements mentioned:
+
+1. Network Topology: The recommended topology for this scenario is a Star topology or a Ring Topology. 
+2. Required Hardware: 
+    a. Routers (Cisco ASA) - 1x each for each building, as these will be at the heart of the network and will manage the traffic within their respective buildings.
+    b. Switches (Cisco Catalyst/Catalyst 6500/6500-XR) - 2x each for each building, to provide connectivity between the routers and user devices.
+ 
+3. IP Addressing: For this design, we'll use a private network using subnetting and dynamic IP addresses. We will also assign static IP address space to the guest services like printers. 
+4. VLAN Configuration: Create separate VLANs for each building. These VLANs can be used for network segmentation, providing better security and performance.
+5. Routing Protocols: Use Cisco's Advanced Networking Operating System (ANOS) for routing. ANOS provides a single pane-of-glass interface to configure the entire network, including routing tables and route management features. It will also help in efficient network management.
+6. Security Considerations: 
+    a. Implementing strong passwords on all devices and configuring a secure firewall at each router level (network layer) for security purposes.
+    b. Using VLANs to isolate different types of traffic, such as voice, data, and video.
+
+This design will provide efficient network management, scalability, and robustness while maintaining network security within the campus setting.
+

@@ -1,0 +1,64 @@
+Ollama_model__llama2_7b__
+129.7321481704712
+A
+Network Topology ASCII Diagram:
+```
+                   +---------------------------+
+                   |          Campus Network       |
+                   +---------------------------+
+                         |
+                         |
+                         v
+                   +---------------+           +---------------+
+                   |     Building 1    |           |     Building 2    |
+                   +---------------+           +---------------+
+                         |
+                         |
+                         v
+                   +---------------+           +---------------+
+                   |      Building 3    |           |      Data Center   |
+                   +---------------+           +---------------+
+                         |
+                         |
+                         v
+                   +---------------------------+           +---------------------------+
+                   |     Network Links       |           |     Security Firewall    |
+                   +---------------------------+           +---------------------------+
+```
+
+Required Hardware:
+
+1. Cisco 3560 Catalyst Switches (2 per building, 1 per data center)
+2. Cisco 2950 Series Routers (1 per building, 1 per data center)
+3. Cisco ASA 5500 Firewalls (1 per building, 1 per data center)
+4. Cisco 6500 Series Switches (1 per building, 1 per data center)
+
+IP Addressing Scheme:
+
+The network will use a Classless Inter-Domain Routing (CIDR) addressing scheme to maximize efficiency and scalability. The following IP addresses will be used:
+
+* Building 1: 10.0.0.0/24
+* Building 2: 10.0.1.0/24
+* Building 3: 10.0.2.0/24
+* Data Center: 10.0.5.0/24
+
+VLAN Configuration:
+
+The network will use VLANs to separate traffic into different logical networks, improving security and reducing broadcast traffic. The following VLANs will be created:
+
+* VLAN 1: Default VLAN for all devices
+* VLAN 2: Separate network for critical applications (Building 1 only)
+* VLAN 3: Separate network for non-critical applications (Building 2 only)
+* VLAN 4: Separate network for data center traffic
+
+Routing Protocols:
+
+The network will use Open Shortest Path First (OSPF) as the primary routing protocol, which is well suited for large, complex networks. Additionally, the network will use BGP (Border Gateway Protocol) to exchange routing information between autonomous systems.
+
+Security Considerations:
+
+1. Implement a Network Access Control (NAC) system to regulate access to the network based on user and device attributes.
+2. Configure the firewalls to allow only necessary traffic through the security boundaries.
+3. Use IPsec to encrypt sensitive data transmitted between buildings and the data center.
+4. Implement a Network-Based Intrusion Detection System (NIDS) to monitor network traffic for signs of intrusion or malicious activity.
+5. Configure regular security audits and penetration testing to identify vulnerabilities in the network.

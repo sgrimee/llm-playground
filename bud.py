@@ -20,9 +20,13 @@ Label each section of your response with the corresponding title.
 """
 
 models = [
-    Ollama(model="llama2:7b"),
-    Ollama(model="llama2:13b"),
-    Ollama(model="llama2:70b"),
+    Ollama(model="phi"),
+    Ollama(model="dolphin-phi"),
+    Ollama(model="orca-mini"),
+    Ollama(model="gemma:2b"),
+#    Ollama(model="llama2:7b"),
+#    Ollama(model="llama2:13b"),
+#    Ollama(model="llama2:70b"),
 ]
 
 # Create the prompt and chain
@@ -31,7 +35,8 @@ prompt = PromptTemplate(template=prompt_template, input_variables=[])
 # Benchmark the models
 results = []
 for model in models:
-    model_name = str(model.__repr__()).translate(str.maketrans("(),=':", "______"))
+    model_name = model.model
+    model_filename = str(model.__repr__()).translate(str.maketrans("(),=':", "______"))
     print(f"Pre-loading model: {model_name}")
     model.invoke("")
     print(f"Running model: {model_name}")
@@ -51,7 +56,7 @@ for model in models:
     else:
         grade = "F"
         
-    with open(f"results/{model_name}.txt", "w") as file:
+    with open(f"buds_results/{model_filename}.txt", "w") as file:
         file.write(f"{model_name}\n")
         file.write(f"{elapsed_time}\n")
         file.write(f"{grade}\n")

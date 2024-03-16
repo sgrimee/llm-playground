@@ -1,0 +1,51 @@
+orca-mini
+88.95974516868591
+A
+ Design Specification:
+
+1. Network Topology ASCII Diagram:
+
+![Network Topology ASCII Diagram](https://i.imgur.com/9WvqhFH.png)
+
+2. Required Hardware:
+
+- Routers: Cisco 8000 Series
+- Switches: Cisco Catalyst 3560X Series or 3750X Series
+- Firewalls: Cisco ASA 5500 Series or 5600 Series
+
+3. IP Addressing Scheme:
+
+The network will be divided into four departments: Finance, Human Resources, IT, and Operations. Each department will have its own private IP subnet to ensure seamless communication between devices within each department. The address blocks for the four departments are as follows:
+
+- Finance: 192.168.0.0/15
+- Human Resources: 192.168.1.0/24
+- IT: 192.168.2.0/24
+- Operations: 192.168.3.0/24
+
+4. VLAN Configuration:
+
+The network will be designed with Virtual Local Area Networks (VLANs). Each department will have its own VLAN, which will be used to segregate traffic and improve security. The VLAN configuration is as follows:
+
+- Finance: 192.168.0.0/15, 192.168.1.0/24, 192.168.2.0/24
+- Human Resources: 192.168.1.0/24, 192.168.2.0/24, 192.168.3.0/24
+- IT: 192.168.0.0/15, 192.168.1.0/24, 192.168.2.0/24
+- Operations: 192.168.3.0/24, 192.168.4.0/24, 192.168.5.0/24
+
+5. Routing Protocols:
+
+The network will be designed with the following routing protocols:
+
+- OSPF (Open Shortest Path First): This protocol will be used to calculate the best path for traffic to travel between devices on the network.
+- EIGRP (Explicit Route Encoding andgt;Guarding Protocol): This protocol is used as a backup to OSPF and provides more reliable routing calculations.
+
+6. Security Considerations:
+
+To ensure security, the network will be designed with the following measures:
+
+- Firewall configuration: The network will have at least two firewalls - one for incoming traffic and one for outgoing traffic. Both firewalls will be configured to block all incoming traffic that is not authorized.
+- Access control lists (ACLs): Access control lists will be used to restrict access to sensitive areas of the network, such as servers and databases.
+- Encryption: All data transmissions will use encryption protocols, such as SSL or IPSec, to protect against unauthorized access.
+- Port security: All ports will be encrypted and protected by firewalls to prevent unauthorized access.
+- User authentication and authorization: Users will be authenticated and authorized before they are granted access to the network.
+
+Overall, this design emphasizes performance, scalability, and security.
