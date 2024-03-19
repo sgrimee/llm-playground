@@ -1,64 +1,97 @@
-Ollama_model__llama2_7b__
-129.7321481704712
-A
-Network Topology ASCII Diagram:
+llama2:7b
+
+161.34939694404602
+
+
+Design Specification for a 3-Building Campus Network Using Cisco Equipment:
+
+1. Network Topology ASCII Diagram:
 ```
-                   +---------------------------+
-                   |          Campus Network       |
-                   +---------------------------+
-                         |
-                         |
-                         v
-                   +---------------+           +---------------+
-                   |     Building 1    |           |     Building 2    |
-                   +---------------+           +---------------+
-                         |
-                         |
-                         v
-                   +---------------+           +---------------+
-                   |      Building 3    |           |      Data Center   |
-                   +---------------+           +---------------+
-                         |
-                         |
-                         v
-                   +---------------------------+           +---------------------------+
-                   |     Network Links       |           |     Security Firewall    |
-                   +---------------------------+           +---------------------------+
+    +---------------+
+    | Building 1   |
+    +---------------+
+           |
+           |
+    +---------------+
+    | Building 2   |
+    +---------------+
+           |
+           |
+    +---------------+
+    | Building 3   |
+    +---------------+
+           |
+           |
+    +---------------+
+    | Campus Network |
+    +---------------+
+```
+2. List of Required Hardware:
+
+a. Routers:
+
+* Cisco SR-1000 Series Routers (Routers): 3 units (SR1000-3R)
+	+ Product ID: 1945-SR1000-K9
+b. Switches:
+
+* Cisco SSG-500 Series Smart Switches (Switches): 6 units (SSG500-6S)
+	+ Product ID: 1945-SSG500-K9
+c. Firewalls:
+
+* Cisco ASA 5500 Series Firewalls (Firewalls): 2 units (ASA5500-4U)
+	+ Product ID: 1945-ASA5500-K9
+3. List of Software Images to Use for Each Product:
+
+a. Routers:
+
+* Cisco IOS Image (15.2.3T)
+	+ Product Code: IOS-15.2.3T
+b. Switches:
+
+* Cisco IOS Image (15.2.3T)
+	+ Product Code: IOS-15.2.3T
+c. Firewalls:
+
+* Cisco ASA IOS Image (15.2.3T)
+	+ Product Code: IOS-15.2.3T
+4. IP Addressing Scheme:
+
+* Subnet mask: 255.255.255.0
+* Network range: 10.0.0.0 - 10.0.255.255
+* Subnet range: 10.0.0.0/24
+5. VLAN Configuration:
+
+* Create 3 VLANs (VLAN 1, VLAN 2, and VLAN 3)
+* Assign each VLAN a separate subnet within the network range
+	+ VLAN 1: 10.0.1.0/24
+	+ VLAN 2: 10.0.2.0/24
+	+ VLAN 3: 10.0.3.0/24
+6. Routing Protocols:
+
+* Implement a distance-vector routing protocol (such as RIP or OSPF) to determine the best path for network traffic
+7. Security Considerations:
+
+* Configure the firewalls to allow only necessary inbound and outbound traffic
+	+ Allow inbound traffic on ports 80 (HTTP), 443 (HTTPS), and 22 (SSH)
+	+ Allow outbound traffic on ports 80, 443, and 22
+* Implement access control lists (ACLs) to restrict network access based on user roles or departmental needs
+	+ Restrict access to sensitive areas of the network, such as the database server or the management network
 ```
 
-Required Hardware:
+I would rate this design a 8 out of 10.
 
-1. Cisco 3560 Catalyst Switches (2 per building, 1 per data center)
-2. Cisco 2950 Series Routers (1 per building, 1 per data center)
-3. Cisco ASA 5500 Firewalls (1 per building, 1 per data center)
-4. Cisco 6500 Series Switches (1 per building, 1 per data center)
+Summary: Well-structured design with detailed hardware and software specifications, IP addressing, VLAN, routing, and security considerations.
 
-IP Addressing Scheme:
+Detailed Comments:
+- The network topology diagram provides a clear overview of the campus network layout.
+- The list of required hardware is specific and includes product IDs for easy ordering.
+- Software image selection is consistent across all devices for uniformity.
+- The IP addressing scheme is well-defined with a clear subnet range and VLAN configuration.
+- Implementing a distance-vector routing protocol like OSPF is a good choice for scalability.
+- Security considerations are thorough, with firewall configurations and ACLs for network access control.
 
-The network will use a Classless Inter-Domain Routing (CIDR) addressing scheme to maximize efficiency and scalability. The following IP addresses will be used:
+Improvements:
+- Consider including redundancy measures like HSRP or VRRP for high availability.
+- Add details on QoS implementation for better performance management.
+- Include a disaster recovery plan for network resilience in case of failures.
 
-* Building 1: 10.0.0.0/24
-* Building 2: 10.0.1.0/24
-* Building 3: 10.0.2.0/24
-* Data Center: 10.0.5.0/24
-
-VLAN Configuration:
-
-The network will use VLANs to separate traffic into different logical networks, improving security and reducing broadcast traffic. The following VLANs will be created:
-
-* VLAN 1: Default VLAN for all devices
-* VLAN 2: Separate network for critical applications (Building 1 only)
-* VLAN 3: Separate network for non-critical applications (Building 2 only)
-* VLAN 4: Separate network for data center traffic
-
-Routing Protocols:
-
-The network will use Open Shortest Path First (OSPF) as the primary routing protocol, which is well suited for large, complex networks. Additionally, the network will use BGP (Border Gateway Protocol) to exchange routing information between autonomous systems.
-
-Security Considerations:
-
-1. Implement a Network Access Control (NAC) system to regulate access to the network based on user and device attributes.
-2. Configure the firewalls to allow only necessary traffic through the security boundaries.
-3. Use IPsec to encrypt sensitive data transmitted between buildings and the data center.
-4. Implement a Network-Based Intrusion Detection System (NIDS) to monitor network traffic for signs of intrusion or malicious activity.
-5. Configure regular security audits and penetration testing to identify vulnerabilities in the network.

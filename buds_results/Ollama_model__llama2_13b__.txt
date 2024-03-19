@@ -1,0 +1,91 @@
+llama2:13b
+
+1670.298642873764
+
+
+Network Topology ASCII Diagram:
+```
+                   +---------------+
+                   |     Building 1    |
+                   +---------------+
+                         |           |
+                         |  Core Switch  |
+                         |           |
+                         v           v
+                   +---------------+
+                   |  Access Switch  |
+                   +---------------+
+                         |           |
+                         |  Wireless APs  |
+                         |           |
+                         v           v
+                   +---------------+
+                   |     Building 2    |
+                   +---------------+
+                         |           |
+                         |  Core Switch  |
+                         |           |
+                         v           v
+                   +---------------+
+                   |  Access Switch  |
+                   +---------------+
+                         |           |
+                         |  Wireless APs  |
+                         |           |
+                         v           v
+                   +---------------+
+                   |     Building 3    |
+                   +---------------+
+```
+Required Hardware:
+
+* 3 x Cisco Catalyst 4500E Switches (for core and access layers)
+* 2 x Cisco 6500 Series Routers (for inter-building connectivity and Internet access)
+* 1 x Cisco ASA 5500 Firewall (for security and NAT purposes)
+* 3 x Cisco Wireless 3700 Series Access Points (for wireless connectivity)
+
+IP Addressing Scheme:
+
+* Use a private IP address space (10.x.x.x/24) for the campus network
+* Assign static IP addresses to all devices, following a logical addressing scheme (e.g., servers - 10.x.x.10-20, switches - 10.x.x.30-40, etc.)
+
+VLAN Configuration:
+
+* Use VLANs to segment the network into different domains and provide isolation between departments and user groups
+* Assign the following VLANs:
+	+ VLAN 1 ( default ) - To be used for all devices that do not require any special configuration
+	+ VLAN 2 - To be used for IT department devices (servers, storage, etc.)
+	+ VLAN 3 - To be used for marketing department devices (printers, scanners, etc.)
+	+ VLAN 4 - To be used for sales department devices (laptops, desktops, etc.)
+
+Routing Protocols:
+
+* Use OSPFv3 as the intra-building routing protocol, with the following settings:
+	+ Area 1 (Building 1) - Use a cost of 10 for connections within Building 1
+	+ Area 2 (Building 2) - Use a cost of 20 for connections within Building 2
+	+ Area 3 (Building 3) - Use a cost of 30 for connections within Building 3
+* Use BGP as the inter-building routing protocol, with the following settings:
+	+ Peer AS (Autonomous System) number is 65000
+	+ Use a default route with a weight of 10
+
+Security Considerations:
+
+* Implement access control lists (ACLs) on all switches to restrict unauthorized access to network resources
+* Configure the firewall to allow only necessary traffic to and from the Internet
+* Enable SSHv2 and SSL/TLS encryption for remote access and management purposes
+* Use strong passwords and passphrases, and implement account lockout policies to prevent brute-force attacks
+* Implement a network-wide intrusion detection and prevention system (IDS/IPS) to detect and block malicious traffic
+
+This design provides a high-performance, scalable, and secure campus network that can accommodate the needs of a growing organization. The use of private IP addresses, VLANs, and access control lists ensures that the network is protected from unauthorized access and security threats. The implementation of OSPFv3 and BGP provides efficient routing between buildings and to the Internet.
+
+Grade: 9
+
+Summary: Comprehensive design with strong security measures.
+
+Comments:
+- The design includes a detailed network topology, hardware list, IP addressing scheme, VLAN configuration, routing protocols, and security considerations.
+- The use of VLANs for segmentation and OSPFv3/BGP for routing protocols demonstrates a solid understanding of network design principles.
+- Security measures such as ACLs, firewall configurations, and IDS/IPS implementation are thorough and essential for protecting the network.
+- The design could be improved by providing more detailed information on redundancy and failover mechanisms to ensure high availability.
+- Overall, this design is thorough, but a more detailed explanation of configuration steps would be beneficial for network engineers implementing the design.
+

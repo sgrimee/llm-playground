@@ -1,35 +1,66 @@
 dolphin-phi
-35.96039128303528
-A
-Title: Campus Network Design Specification
 
-1. Network Topology Ascii Diagram
-The network topology for a 3-building campus will be a star configuration, where all devices are connected to a central hub or access point (AP). This design provides efficient and reliable connectivity throughout the campus.
+80.20910716056824
+
+1. Network Topology Diagram: 
+   In this network, three buildings are connected as follows: Building 1 to Building 2 (A to B), Building 2 to Building 3 (B to C), and Building 1 to Building 3 (A to C). The central building serves as the control hub for routing between other buildings.
 
 2. Required Hardware:
-   a. Cisco Catalyst 4800 Series Access Points (APs): To serve as the central hub for the network.
 
-   b. Cisco Catalyst 9000 Series Repeaters (RMs): To extend the reach of the APs in between buildings.
+   a. Cisco IOS-XR Router - Product ID: 001:00, Version: 20.02.0
+      Operating System: i-os XE, Enterprise Edition (I-os)
 
-   c. Cisco Nexus 7000-X Series Routing Modules: For inter-building connectivity and routing.
+   b. Cisco ASA-10000 series Firewall - Product ID: 0002:000, Version: 3.4.3
+      Operating System: IOS, Enterprise Edition (I-os)
+      
+   c. Cisco Nexus 9000 series Switch - Product ID: 0003:000, Version: 20.02.0
+      Operating System: i-os XE, Enterprise Edition (I-os)
 
-   d. Cisco Catalyst 3100 Series Switch: To connect the campus to the internet.
+   d. Cisco Meraki Access Points - Product IDs: 0004:000-0000, 0500:000-0010, and so on, as per the campus requirements.
 
-   e. Cisco Meraki AirDefense Firewall: To secure the network from external threats.
+3. Software Image:
 
-3. IP Addressing Scheme:
-Use a multi-tenant private subnet for each building, allowing multiple users and devices on the same network without interference.
+   a. Cisco IOS-XR Router - Network Center Software Image: NCS-0012:00, Version: 20.02.0
+   b. Cisco ASA-10000 series Firewall - Security Manager (SM) - SM-0010:00, Version: 3.4.3
+   c. Cisco Nexus 9000 series Switch - iOS XE 20.02.0 Enterprise Edition Image: NIS-0013:00, Version: 20.02.0
 
-4. VLAN Configuration:
-Create separate VLANs for different departments or services within each building to manage traffic efficiently and secure communications.
+4. IP Addressing Scheme:
 
-5. Routing Protocols:
-Use the latest Cisco IOS (Internetworking Operating System) routing protocols, such as OSPF (Open Shortest Path First) and BGP (Bundling Protocol for Internet Branching), for optimal performance and scalability.
+   a. Building 1 (A) to Building 2 (B): Use the following subnets: 
+      i. Subnet A1:255.255.255.0 for BGP route
+      ii. Subnet B1:192.168.X.0-198 for internal network
 
-6. Security Considerations:
-   a. Implement a strong access control policy to ensure that only authorized devices can connect to the network.
+   b. Building 2 (B) to Building 3 (C): Use the following subnets:
+      i. Subnet B2:192.168.Y.0-198 for internal network and 
+      ii. Subnet C1:192.168.Z.0-198 for external access
 
-   b. Configure the Meraki AirDefense Firewall with appropriate security features, such as firewall rules and intrusion detection systems (IDS).
+   c. Building 1 (A) to Building 3 (C): Use the following subnets:
+      i. Subnet A1:255.255.X.0 for BGP route
+      ii. Subnet C1:192.168.W.0-198 for internal network and 
+      iii. Subnet Z2:192.168.Z.0-198 for external access
 
-   c. Regularly monitor network traffic and apply necessary updates and patches to maintain security.
-   d. Implement VLAN tagging for sensitive data to restrict access and prevent unauthorized disclosure.
+5. VLAN Configuration:
+
+   a. Building 1 (A) to Building 2 (B): Create VLANs: A1, B1, and A1-B1 using the following range: 20-29 and 50-59. 
+
+6. Routing Protocol:
+
+   a. For BGP route between Buildings 1, 2, and 3: Use the Cisco IOS-XR Router's Network Center Software Image NCS-0012:00, with the subnet A1:255.255.255.0 as the default gateway for routing table update (RTU).
+
+7. Security Considerations:
+
+   a. Implement Access Control Lists (ACLs) on all network interfaces to control access between different users and devices in each building.
+   b. Set up a centralized security management system with Cisco ASA-10000 series Firewall as the primary security device for monitoring and blocking any unauthorized traffic.
+   c. Use strong encryption protocols such as WPA2 for wireless networking, and apply appropriate access control lists (ACLs) to secure the network from internal threats.
+   d. Regularly monitor and update security settings on all Cisco devices to ensure optimal protection against known vulnerabilities.
+
+Evaluation: 8/10
+Summary: Solid design with strong security measures, but some complexity in IP addressing and VLAN configuration.
+
+Detailed Comments:
+- The design includes a comprehensive list of required hardware, software images, IP addressing scheme, VLAN configuration, routing protocols, and security considerations.
+- Security measures are well thought out with ACLs, centralized security management, encryption protocols, and regular updates.
+- The IP addressing scheme and VLAN configuration may be a bit complex and could potentially be simplified for easier management.
+- The routing protocol using BGP for routing between buildings is a good choice for scalability.
+- The design could be improved by providing more detailed explanations of how each component functions within the network.
+
